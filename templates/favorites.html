@@ -1,0 +1,66 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block content %}
+{% if message %}
+ <script>   
+  alert('{{message}}');
+ </script>  
+ {% endif %}  
+        <!-- Page Header Start -->
+        <div class="page-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>View Recipes</h2>
+                        <div>
+
+                            
+                            
+                        <form action="{% url 'search_results' %}" method="get">
+                            <input name="q" type="text" placeholder="Search...">
+                        </form>
+                        
+                    </div>
+                    <div class="col-12">
+                        <a href="">Home</a>
+                        <a href="">Recipes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Header End -->
+        
+        
+        <!-- Contact Start -->
+        <div class="view_recipe">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2>View Delicious Recipes</h2>
+                </div>
+                <br>
+                <div class="row contact-form">
+                    
+                    <div class="col-md-6">
+                        {% for Recipe in event_list%}
+                        -
+                        <br>
+                        <b>Recipe Name: {{Recipe.recipe_name}}</b> 
+
+                        <ul>
+                            <li>Ingredients:{{Recipe.recipe_ingredients}}</li>
+                            <li> Description:{{Recipe.recipe_description}}</li><br><br>
+                            <li><img src={{Recipe.recipe_image.url}} alt="image class"="Images"></li>
+                        </ul>
+                    {% endfor %}  
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->
+
+       
+
+{% endblock %}
+
